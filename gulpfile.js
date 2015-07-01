@@ -25,6 +25,7 @@ var buddyjs = require('gulp-buddy.js');
 var htmlhint = require('gulp-htmlhint');
 var sitemap = require('gulp-sitemap');
 var connect = require('gulp-connect');
+var markdown = require('gulp-markdown');
 
 var src = {
     stylesDirs: [
@@ -41,7 +42,8 @@ var src = {
             './src/modules/**/*.jade'
         ]
     },
-    jsDir: './src/**/*.js'
+    jsDir: './src/**/*.js',
+    mdDir: ['./src/posts/**/*.md']
 };
 
 var dest = {
@@ -250,6 +252,17 @@ gulp.task('webserver', function () {
         port: 8001,
         livereload: true
     });
+});
+
+gulp.task('markdown', function () {
+    //TODO (S.Panfilov)
+    return gulp.src(src.mdDir)
+        .pipe(markdown())
+        .pipe(minifyHTML({
+            empty: true,
+            spare: true
+        }))
+        .pipe(gulp.dest('./src/posts'));
 });
 
 gulp.task('watch', function () {
