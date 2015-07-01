@@ -4,7 +4,7 @@ var markdown = require('metalsmith-markdown');
 
 
 var src = './src';
-var dest = './build';
+var dest = './';
 
 gulp.task('build', function () {
     return gulp.src('./src/**/*')
