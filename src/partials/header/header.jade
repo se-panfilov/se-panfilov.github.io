@@ -1,4 +1,4 @@
-.navbar.navbar-inverse.navbar-fixed-top.pages_header
+.navbar.pages_header
     .navbar-inner
         .container
             button.navbar-toggle(type='button', ng-click='isNavbarCollapsed = !isNavbarCollapsed')
@@ -12,6 +12,6 @@
                             li
                                 a.navbar-brand(ui-sref="macros", title="На главную")
                                     | Sergey Panfilov
-                ul.nav.navbar-nav
-                    li(ng-class!="{active: $state.includes('about')}")
-                        a(href='', ui-sref="about", ui-sref-opts="{reload: true}") About
+                //ul.nav.navbar-nav
+                    li(ng-class!="{active: $state.includes('blog')}")
+                        a(href='', ui-sref="blog", ui-sref-opts="{reload: true}") Blog

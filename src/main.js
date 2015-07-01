@@ -6,7 +6,7 @@ angular.module('sp-io', [
     'sp-io.templates',
 
     //pages
-    'sp-io.pages.about',
+    'sp-io.pages.landing',
 
     //external libs
     'angular-loading-bar',
@@ -17,6 +17,6 @@ angular.module('sp-io', [
 ])
 
     .config(function ($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/about');
+        $urlRouterProvider.otherwise('/landing');
     })
 ;
