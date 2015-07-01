@@ -17,7 +17,6 @@ angular.module('sp-io', [
 ])
 
     .config(function ($urlRouterProvider) {
-        //TODO (S.Panfilov) fix this
-        //$urlRouterProvider.otherwise('/macros');
+        $urlRouterProvider.otherwise('/about');
     })
 ;

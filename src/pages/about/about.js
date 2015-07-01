@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app.pages.analytics', [
+angular.module('sp-io.pages.about', [
     'ui.router'
 ])
 

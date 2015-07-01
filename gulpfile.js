@@ -247,7 +247,7 @@ gulp.task('vendor_css', function () {
 
 gulp.task('webserver', function () {
     connect.server({
-        root: [__dirname],
+        root: ['./'],
         port: 8001,
         livereload: true
     });

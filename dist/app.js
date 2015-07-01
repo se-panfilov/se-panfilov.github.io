@@ -17,14 +17,13 @@ angular.module('sp-io', [
 ])
 
     .config(['$urlRouterProvider', function ($urlRouterProvider) {
-        //TODO (S.Panfilov) fix this
-        //$urlRouterProvider.otherwise('/macros');
+        $urlRouterProvider.otherwise('/about');
     }])
 ;
 
 'use strict';
 
-angular.module('app.pages.analytics', [
+angular.module('sp-io.pages.about', [
     'ui.router'
 ])
 
