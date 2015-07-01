@@ -1,0 +1,42 @@
+{
+  "name": "se-panfilov.github.io",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Sergey Panfilov's personal site",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/se-panfilov/se-panfilov.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "blog",
+    "Sergey",
+    "Panfilov",
+    "javascript",
+    "coffeescript",
+    "typescript",
+    "jade",
+    "developer",
+    "angularjs",
+    "nodejs"
+  ],
+  "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
+  "license": "GNU2",
+  "bugs": {
+    "url": "https://github.com/se-panfilov/se-panfilov.github.io/issues"
+  },
+  "dependencies": {
+    "json3": "~3.3.2",
+    "angular": "~1.4.1",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "angular-bootstrap": "~0.13.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-ui-router-anim-in-out": "~0.0.13",
+    "angular-animate": "~1.4.1",
+    "angular-loading-bar": "~0.8.0"
+  },
+  "devDependencies": {
+  }
+}
