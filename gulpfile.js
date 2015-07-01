@@ -130,7 +130,7 @@ function makeJade() {
             spare: true
         }))
         .pipe(templateCache({
-            module: 'app.templates',
+            module: 'sp-io.templates',
             standalone: true
         }))
 }
@@ -170,15 +170,14 @@ gulp.task('jade_static_templates', function () {
 });
 
 gulp.task('jade_static_main', function () {
-    return gulp.src(src.jade.main, {base: 'static'})
-        .pipe(changed('./', {extension: '.html'}))
+    return gulp.src(src.jade.main)
         .pipe(jade({pretty: false}))
         .on('error', console.log)
         .pipe(minifyHTML({
             empty: true,
             spare: true
         }))
-        .pipe(cachebreaker('static'))
+        .pipe(cachebreaker())
         .on('error', console.log)
         .pipe(gulp.dest('./'));
 });
@@ -189,7 +188,7 @@ gulp.task('jade_and_js', function () {
 });
 
 gulp.task('stylus', function () {
-    return gulp.src(src.stylesDirs, {base: 'static'})
+    return gulp.src(src.stylesDirs)
         //TODO (S.Panfilov) check changed
         //.pipe(changed(dest.dist))
         .pipe(concat('app.min.styl'))
@@ -247,7 +246,7 @@ gulp.task('vendor_css', function () {
 
 gulp.task('webserver', function () {
     connect.server({
-        root: ['./'],
+        //root: [__dirname],
         port: 8001,
         livereload: true
     });
