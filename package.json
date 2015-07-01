@@ -1,0 +1,41 @@
+{
+  "name": "se-panfilov.github.io",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Sergey Panfilov's personal site",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/se-panfilov/se-panfilov.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "blog",
+    "Sergey",
+    "Panfilov",
+    "javascript",
+    "coffeescript",
+    "typescript",
+    "jade",
+    "developer",
+    "angularjs",
+    "nodejs"
+  ],
+  "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/se-panfilov/se-panfilov.github.io/issues"
+  },
+  "homepage": "https://github.com/se-panfilov/se-panfilov.github.io",
+  "devDependencies": {
+    "gulpsmith": "^0.5.3",
+    "handlebars": "^3.0.3",
+    "metalsmith": "^1.7.0",
+    "metalsmith-markdown": "^0.2.1",
+    "metalsmith-permalinks": "^0.4.0",
+    "metalsmith-templates": "^0.7.0"
+  }
+}
