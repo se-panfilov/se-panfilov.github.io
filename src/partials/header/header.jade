@@ -1,0 +1,17 @@
+.navbar.navbar-inverse.navbar-fixed-top.pages_header
+    .navbar-inner
+        .container
+            button.navbar-toggle(type='button', ng-click='isNavbarCollapsed = !isNavbarCollapsed')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            .navbar-collapse(collapse='isNavbarCollapsed')
+                nav.hidden-xs
+                    .navbar-header
+                        ul.nav.navbar-nav
+                            li
+                                a.navbar-brand(ui-sref="macros", title="На главную")
+                                    | Avalanche
+                ul.nav.navbar-nav
+                    li(ng-class!="{active: $state.includes('about')}")
+                        a(href='', ui-sref="about", ui-sref-opts="{reload: true}") About

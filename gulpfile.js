@@ -4,7 +4,6 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var sourcemaps = require('gulp-sourcemaps');
-var ngConstant = require('gulp-ng-constant');
 var watch = require('gulp-watch');
 var jshint = require('gulp-jshint');
 var changed = require('gulp-changed');
@@ -122,7 +121,7 @@ gulp.task('sizes_libs', function () {
 function makeJade() {
     return gulp.src(src.jade.templates)
         //TODO (S.Panfilov) check with changed pipe
-        //.pipe(changed(dest.staticDir, {extension: '.html'}))
+        .pipe(changed(dest.dist, {extension: '.html'}))
         .pipe(jade({pretty: false}))
         .on('error', console.log)
         .pipe(minifyHTML({
@@ -137,7 +136,7 @@ function makeJade() {
 
 function makeJS() {
     return gulp.src([src.jsDir])
-        .pipe(changed(dest.staticDir))
+        .pipe(changed(dest.dist))
         .pipe(concat('app.js'))
         .pipe(ngAnnotate({remove: true, add: true, single_quotes: true}))
         ;
@@ -171,7 +170,7 @@ gulp.task('jade_static_templates', function () {
 
 gulp.task('jade_static_main', function () {
     return gulp.src(src.jade.main, {base: 'static'})
-        .pipe(changed(dest.staticDir, {extension: '.html'}))
+        .pipe(changed('./', {extension: '.html'}))
         .pipe(jade({pretty: false}))
         .on('error', console.log)
         .pipe(minifyHTML({
@@ -180,7 +179,7 @@ gulp.task('jade_static_main', function () {
         }))
         .pipe(cachebreaker('static'))
         .on('error', console.log)
-        .pipe(gulp.dest('static'));
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('jade_and_js', function () {
@@ -191,7 +190,7 @@ gulp.task('jade_and_js', function () {
 gulp.task('stylus', function () {
     return gulp.src(src.stylesDirs, {base: 'static'})
         //TODO (S.Panfilov) check changed
-        .pipe(changed(dest.dist))
+        //.pipe(changed(dest.dist))
         .pipe(concat('app.min.styl'))
         .pipe(stylus({use: [nib()], compress: true}))
         .pipe(minifyCss())
@@ -245,18 +244,6 @@ gulp.task('vendor_css', function () {
         .pipe(gulp.dest(dest.dist));
 });
 
-gulp.task('config', function () {
-    gulp.src('./url_map.json')
-        .pipe(ngConstant({
-            name: 'app.config.url_map'
-        }))
-        .pipe(gulp.dest(dest.staticDir + '/src/modules/'));
-    gulp.src('./constant_map.json')
-        .pipe(ngConstant({
-            name: 'app.config.constants'
-        }))
-        .pipe(gulp.dest('./src/modules/'));
-});
 
 gulp.task('watch', function () {
     gulp.watch(src.jade.main, ['jade_static_main']);
@@ -273,7 +260,6 @@ gulp.task('build_vendor', function () {
 });
 
 gulp.task('build', function () {
-    gulp.start('config');
     gulp.start('jade_and_js');
     gulp.start('stylus');
     gulp.start('purify_css');
