@@ -24,6 +24,7 @@ var jsinspect = require('gulp-jsinspect');
 var buddyjs = require('gulp-buddy.js');
 var htmlhint = require('gulp-htmlhint');
 var sitemap = require('gulp-sitemap');
+var connect = require('gulp-connect');
 
 var src = {
     stylesDirs: [
@@ -244,6 +245,13 @@ gulp.task('vendor_css', function () {
         .pipe(gulp.dest(dest.dist));
 });
 
+gulp.task('webserver', function () {
+    connect.server({
+        root: [__dirname],
+        port: 8001,
+        livereload: true
+    });
+});
 
 gulp.task('watch', function () {
     gulp.watch(src.jade.main, ['jade_static_main']);

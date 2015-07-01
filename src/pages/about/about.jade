@@ -1,0 +1,70 @@
+main-header
+.page_content.analytics_page
+    .container
+        h3 Аналитика
+        .charts_toolbar.margin_top_med
+            form#charts_filter_form(name="charts_filter_form", ng-submit="getAnalytics()")
+                .analytics_toolbar.btn-group.pull_right
+                    button.btn.btn-success(type="submit", ng-disabled="filterParams.params.queries.length == 0 || filterParams.params.macros.length == 0")
+                        i.fa.fa-check
+                        | &nbsp;
+                        | Построить график
+                    button.btn.btn-default(type="button", ng-click="filterParams.resetParams()")
+                        i.fa.fa-times
+                    button.btn.btn-default(type="button", ng-click="filterParams.showSaveQueryModal()", title="Сохранить запрос")
+                        i.fa.fa-save
+                        | &nbsp;
+                        | Сохранить
+                    button.btn.btn-default(type="button", ng-click="filterParams.showLoadQueryModal()", title="Загрузить запрос")
+                        i.fa.fa-arrow-up
+                        | &nbsp;
+                        | Загрузить
+                .dates_inputs
+                    .form-group
+                        .input-group.required
+                            label.control-label.input-group-addon(for="start_date") Дата начала
+                            input#start_date.form-control(type="text", ng-model="filterParams.params.startDate", datepicker-popup="{{datePopups.dateFormat}}" datepicker-options="{{datePopups.dateOptions}}", is-open="datePopups.isStartDatePopupOpened", close-text="Закрыть", clear-text="Очистить", current-text="Сегодня", ng-click="datePopups.openStartDatePopup($event)")
+                            span.input-group-btn
+                                button.btn.btn-default(type="button", ng-click="datePopups.openStartDatePopup($event)")
+                                    i.fa.fa-calendar
+                    .form-group
+                        .input-group.required
+                            label.control-label.input-group-addon(for="end_date") Дата окончания
+                            input#end_date.form-control(type="text", ng-model="filterParams.params.endDate", datepicker-popup="{{datePopups.dateFormat}}" datepicker-options="{{datePopups.dateOptions}}", is-open="datePopups.isEndDatePopupOpened", close-text="Закрыть", clear-text="Очистить", current-text="Сегодня", ng-click="datePopups.openEndDatePopup($event)")
+                            span.input-group-btn
+                                button.btn.btn-default(type="button", ng-click="datePopups.openEndDatePopup($event)")
+                                    i.fa.fa-calendar
+                .queries_box.margin_top_med.controls.required
+                    label.control-label(for="analytics_queries") Запросы
+                    tags-input#analytics_queries(ng-model="filterParams.params.queries", max-tags="10", placeholder="Добавить запрос", restrict-to-max-tags)
+                    .queries_count
+                        | Осталось запросов:
+                        | &nbsp;
+                        span(ng-bind="filterParams.getQueriesLeftCount()")
+                .macros_box.margin_top_med.controls.required
+                    label.control-label(for="macros_select") Сценарии
+                    ui-select#macros_select(ng-model="filterParams.params.macros", multiple="true", theme="bootstrap")
+                        ui-select-match(placeholder="Сценарии") {{$select.selected[$index].name}}
+                        ui-select-choices(repeat!="macros as macros in filterParams.dropdownMacrosList | filter: $select.search | orderBy: 'name'", refresh="filterParams.searchMacros($select.search)")
+                            div
+                                div(ng-bind-html="trustAsHtml(macros.name)")
+        div#chartdiv.margin_top_big
+        h4 Новости
+        .feeds_container.margin_top_big.margin_bottom_big
+            .feeds_placeholder(ng-show="FeedsFactory.feeds.length === 0")
+                | Нет данных
+            .feeds(infinite-scroll-disabled='FeedsFactory.feeds == 0', infinite-scroll="feeds.loadNewFeedsPage()", infinite-scroll-distance="0")
+                .feeds_list(ng-repeat="feed in FeedsFactory.feeds")
+                    h4(ng-bind="::feed.data.title")
+                    i.is_duplicate.margin_top_big(ng-show="::feed.is_duplicate") Дубль
+                    .description.margin_top_big(ng-bind="::feed.data.description")
+                    .feed_footer.margin_top_big
+                        span.date(ng-show="::feed.published_at")
+                            | Опубликовано
+                            strong(ng-bind="::feed.published_at")
+                            | &nbsp;
+                            | |
+                            | &nbsp;
+                        span.feed_url(ng-show="::feed.url")
+                            a.url(ng-href="{{::feed.url}}", ng-bind="::feed.url")
+                    hr

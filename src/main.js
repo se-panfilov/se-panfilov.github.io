@@ -2,11 +2,11 @@
 
 angular.module('sp-io', [
     //modules
-    'app.header',
-    'app.templates',
+    'sp-io.header',
+    'sp-io.templates',
 
     //pages
-    'app.pages.about',
+    'sp-io.pages.about',
 
     //external libs
     'angular-loading-bar',
