@@ -10,8 +10,8 @@ angular.module('sp-io.header', [])
             templateUrl: 'header/header.html',
             link: function (scope) {
                 (function _init() {
-                    $scope.$state = $state;
-                    $scope.isNavbarCollapsed = true;
+                    scope.$state = $state;
+                    scope.isNavbarCollapsed = true;
                 })();
             }
         };

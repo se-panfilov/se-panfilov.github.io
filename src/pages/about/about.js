@@ -15,7 +15,7 @@ angular.module('sp-io.pages.about', [
         ;
     })
 
-    .controller('AboutPageCtrl', function ($scope) {
+    .controller('AboutPageCtrl', function () {
 
         console.log('About page');
 
