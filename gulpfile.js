@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
+var pureJade = require('jade');
 var sourcemaps = require('gulp-sourcemaps');
 var watch = require('gulp-watch');
 var jshint = require('gulp-jshint');
@@ -26,6 +27,9 @@ var htmlhint = require('gulp-htmlhint');
 var sitemap = require('gulp-sitemap');
 var connect = require('gulp-connect');
 var markdown = require('gulp-markdown');
+var frontMatter = require('front-matter');
+var map = require('vinyl-map');
+var marked = require('marked');
 
 var src = {
     stylesDirs: [
@@ -45,6 +49,8 @@ var src = {
     jsDir: './src/**/*.js',
     mdDir: ['./src/posts/**/*.md']
 };
+
+var postTemplate = 'src/templates/post.jade';
 
 var dest = {
     dist: './dist'
@@ -105,6 +111,30 @@ gulp.task('htmlhint', function () {
             "attr-no-duplication": true
         }))
         .pipe(htmlhint.reporter())
+});
+
+gulp.task('blog', function () {
+
+    var tpl = fs.readFileSync(postTemplate);
+    var jadeTpl = pureJade.compile(tpl);
+    var renderPost = map(function (code, filename) {
+
+        var parsed = frontMatter(String(code));
+        var data = parsed.attributes;
+        var body = parsed.body;
+
+        body = marked.parse(body);
+
+        data.content = body;
+        data.filename = filename;
+
+        return jadeTpl(data);
+    });
+
+    return gulp.src(src.mdDir)
+        .pipe(renderPost)
+        .pipe(rename({extname: '.html'}))
+        .pipe(gulp.dest(dest.dist + '/posts'));
 });
 
 gulp.task('sizes_dist', function () {
