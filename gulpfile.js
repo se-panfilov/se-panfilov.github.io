@@ -1,35 +1,6 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var jade = require('gulp-jade');
-var pureJade = require('jade');
-var sourcemaps = require('gulp-sourcemaps');
-var watch = require('gulp-watch');
-var jshint = require('gulp-jshint');
-var changed = require('gulp-changed');
-var ngAnnotate = require('gulp-ng-annotate');
-var stylus = require('gulp-stylus');
-var nib = require('nib');
-var minifyHTML = require('gulp-minify-html');
-var cachebreaker = require('gulp-cache-breaker');
-var concatVendorCss = require('gulp-concat-css');
-var minifyCss = require('gulp-minify-css');
-var templateCache = require('gulp-angular-templatecache');
-var mergeStream = require('merge-stream');
-var purify = require('purify-css');
-var size = require('gulp-filesize');
-var fs = require('fs');
-var complexity = require('gulp-complexity');
-var jsinspect = require('gulp-jsinspect');
-var buddyjs = require('gulp-buddy.js');
-var htmlhint = require('gulp-htmlhint');
-var sitemap = require('gulp-sitemap');
-var connect = require('gulp-connect');
-var markdown = require('gulp-markdown');
-var frontMatter = require('front-matter');
-var map = require('vinyl-map');
-var marked = require('marked');
+var gulp = require('gulp'), concat, rename, uglify, jade, sourcemaps, watch, jshint, changed, ngAnnotate, stylus,
+    nib, minifyHTML, cachebreaker, concatVendorCss, minifyCss, templateCache, mergeStream, purify, size, fs,
+    htmlhint, connect;
 
 var src = {
     stylesDirs: [
@@ -56,15 +27,9 @@ var dest = {
     dist: './dist'
 };
 
-gulp.task('sitemap', function () {
-    gulp.src(['./*.html'])
-        .pipe(sitemap({
-            siteUrl: 'se-panfilov.github.io'
-        }))
-        .pipe(gulp.dest('./'));
-});
-
 gulp.task('lint', function () {
+    jshint = jshint || require('gulp-jshint');
+
     return gulp.src(src.jsDir)
         .pipe(jshint({
             globalstrict: true,
@@ -77,26 +42,11 @@ gulp.task('lint', function () {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('complexity', function () {
-    return gulp.src(src.jsDir)
-        .pipe(complexity());
-});
-
-gulp.task('inspect', function () {
-    return gulp.src(src.jsDir)
-        .pipe(jsinspect());
-});
-
-gulp.task('magic_numbers', function () {
-    return gulp.src(src.jsDir)
-        .pipe(buddyjs({
-            ignore: [0, 1, 2],
-            reporter: 'detailed'
-        }));
-});
-
 gulp.task('htmlhint', function () {
+    jade = jade || require('gulp-jade');
+    htmlhint = htmlhint || require('gulp-htmlhint');
     var html = src.jade.templates.concat(src.jade.main);
+
     return gulp.src(html)
         .pipe(jade({pretty: false}))
         .pipe(htmlhint({
@@ -113,45 +63,21 @@ gulp.task('htmlhint', function () {
         .pipe(htmlhint.reporter())
 });
 
-gulp.task('blog', function () {
-
-    var tpl = fs.readFileSync(postTemplate);
-    var jadeTpl = pureJade.compile(tpl);
-    var renderPost = map(function (code, filename) {
-
-        var parsed = frontMatter(String(code));
-        var data = parsed.attributes;
-        var body = parsed.body;
-
-        body = marked.parse(body);
-
-        data.content = body;
-        data.filename = filename;
-
-        return jadeTpl(data);
-    });
-
-    return gulp.src(src.mdDir)
-        .pipe(renderPost)
-        .pipe(rename({extname: '.html'}))
-        .pipe(gulp.dest(dest.dist + '/posts'));
-});
-
 gulp.task('sizes_dist', function () {
+    size = size || require('gulp-filesize');
+
     return gulp.src([
         './dist/**/*.js',
         './dist/**/*.css'
     ]).pipe(size());
 });
 
-gulp.task('sizes_libs', function () {
-    return gulp.src([
-        './bower_components/**/*.js',
-        './bower_components/**/*.css'
-    ]).pipe(size());
-});
-
 function makeJade() {
+    jade = jade || require('gulp-jade');
+    changed = changed || require('gulp-changed');
+    minifyHTML = minifyHTML || require('gulp-minify-html');
+    templateCache = templateCache || require('gulp-angular-templatecache');
+
     return gulp.src(src.jade.templates)
         //TODO (S.Panfilov) check with changed pipe
         .pipe(changed(dest.dist, {extension: '.html'}))
@@ -168,6 +94,10 @@ function makeJade() {
 }
 
 function makeJS() {
+    concat = concat || require('gulp-concat');
+    changed = changed || require('gulp-changed');
+    ngAnnotate = ngAnnotate || require('gulp-ng-annotate');
+
     return gulp.src([src.jsDir])
         .pipe(changed(dest.dist))
         .pipe(concat('app.js'))
@@ -176,6 +106,12 @@ function makeJS() {
 }
 
 function mergeJS(templates, mainJs) {
+    concat = concat || require('gulp-concat');
+    rename = rename || require('gulp-rename');
+    uglify = uglify || require('gulp-uglify');
+    sourcemaps = sourcemaps || require('gulp-sourcemaps');
+    mergeStream = mergeStream || require('merge-stream');
+
     return mergeStream(templates, mainJs)
         .pipe(concat('app.js'))
         .pipe(gulp.dest(dest.dist))
@@ -192,7 +128,6 @@ function buildJS() {
     return mergeJS(templates, mainJs);
 }
 
-
 gulp.task('js', function () {
     buildJS();
 });
@@ -202,6 +137,10 @@ gulp.task('jade_static_templates', function () {
 });
 
 gulp.task('jade_static_main', function () {
+    jade = jade || require('gulp-jade');
+    minifyHTML = minifyHTML || require('gulp-minify-html');
+    cachebreaker = cachebreaker || require('gulp-cache-breaker');
+
     return gulp.src(src.jade.main)
         .pipe(jade({pretty: false}))
         .on('error', console.log)
@@ -220,6 +159,12 @@ gulp.task('jade_and_js', function () {
 });
 
 gulp.task('stylus', function () {
+    concat = concat || require('gulp-concat');
+    //changed = changed || require('gulp-changed');
+    stylus = stylus || require('gulp-stylus');
+    nib = nib || require('nib');
+    minifyCss = minifyCss || require('gulp-minify-css');
+
     return gulp.src(src.stylesDirs)
         //TODO (S.Panfilov) check changed
         //.pipe(changed(dest.dist))
@@ -230,6 +175,7 @@ gulp.task('stylus', function () {
 });
 
 gulp.task('purify_css', function () {
+
     return purifyCss({
         src: ['./index.html', './dist/app.min.js', './dist/vendor.min.js'],
         css: ['./dist/vendor.min.css'],
@@ -238,6 +184,8 @@ gulp.task('purify_css', function () {
 });
 
 function purifyCss(settings) {
+    purify = purify || require('purify-css');
+    fs = fs || require('fs');
     var pure = purify(settings.src, settings.css, {write: false, info: true});
 
     fs.writeFile(settings.output, pure, function (err) {
@@ -246,15 +194,14 @@ function purifyCss(settings) {
 }
 
 gulp.task('vendor_js', function () {
-    return gulp.src([
-        './bower_components/jquery/dist/jquery.js',
-        './bower_components/angular/angular.min.js',
-        './bower_components/angular-animate/angular-animate.min.js',
-        './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-        './bower_components/angular-loading-bar/build/loading-bar.min.js',
-        './bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        './bower_components/angular-ui-router-anim-in-out/anim-in-out.js'
+    concat = concat || require('gulp-concat');
+    rename = rename || require('gulp-rename');
+    uglify = uglify || require('gulp-uglify');
+    sourcemaps = sourcemaps || require('gulp-sourcemaps');
 
+    return gulp.src([
+        './bower_components/angular/angular.min.js',
+//TODO (S.Panfilov)
     ])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(dest.dist))
@@ -266,10 +213,12 @@ gulp.task('vendor_js', function () {
 });
 
 gulp.task('vendor_css', function () {
+    concat = concat || require('gulp-concat');
+    concatVendorCss = concatVendorCss || require('gulp-concat-css');
+    minifyCss = minifyCss || require('gulp-minify-css');
+
     gulp.src([
-        './bower_components/bootstrap/dist/css/bootstrap.min.css',
-        './bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css',
-        './bower_components/angular-loading-bar/build/loading-bar.min.css'
+        //TODO (S.Panfilov)
     ], {base: './dist'})
         .pipe(concatVendorCss('vendor.min.css'))
         .pipe(minifyCss())
@@ -277,6 +226,8 @@ gulp.task('vendor_css', function () {
 });
 
 gulp.task('webserver', function () {
+    connect = connect || require('gulp-connect');
+
     connect.server({
         //root: [__dirname],
         port: 8001,
@@ -284,18 +235,9 @@ gulp.task('webserver', function () {
     });
 });
 
-gulp.task('markdown', function () {
-    //TODO (S.Panfilov)
-    return gulp.src(src.mdDir)
-        .pipe(markdown())
-        .pipe(minifyHTML({
-            empty: true,
-            spare: true
-        }))
-        .pipe(gulp.dest('./src/posts'));
-});
-
 gulp.task('watch', function () {
+    watch = watch || require('gulp-watch');
+
     gulp.watch(src.jade.main, ['jade_static_main']);
     gulp.watch(src.jade.templates, ['jade_static_templates']);
 
@@ -313,7 +255,6 @@ gulp.task('build', function () {
     gulp.start('jade_and_js');
     gulp.start('stylus');
     gulp.start('purify_css');
-    gulp.start('sitemap');
 });
 
 gulp.task('default', function () {
