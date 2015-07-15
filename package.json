@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/se-panfilov/se-panfilov.github.io",
   "devDependencies": {
-    "fs": "0.0.2",
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.7.0",
     "gulp-cache-breaker": "0.0.3",
@@ -51,7 +50,6 @@
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.3.1",
     "merge-stream": "^0.1.8",
-    "nib": "^1.1.0",
-    "purify-css": "^1.0.17"
+    "nib": "^1.1.0"
   }
 }

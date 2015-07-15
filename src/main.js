@@ -11,9 +11,8 @@ angular.module('sp-io', [
     //external libs
     'angular-loading-bar',
     'ngAnimate',
-    'anim-in-out',
-    'ui.router',
-    'ui.bootstrap'
+    'ngMaterial',
+    'ui.router'
 ])
 
     .config(function ($urlRouterProvider) {

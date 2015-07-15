@@ -1,5 +1,5 @@
 var gulp = require('gulp'), concat, rename, uglify, jade, sourcemaps, watch, jshint, changed, ngAnnotate, stylus,
-    nib, minifyHTML, cachebreaker, minifyCss, templateCache, mergeStream, purify, size, fs,
+    nib, minifyHTML, cachebreaker, minifyCss, templateCache, mergeStream, size,
     htmlhint, connect;
 
 var src = {
@@ -170,25 +170,6 @@ gulp.task('stylus', function () {
         .pipe(gulp.dest(dest.dist));
 });
 
-gulp.task('purify_css', function () {
-
-    return purifyCss({
-        src: ['./index.html', './dist/app.min.js', './dist/vendor.min.js'],
-        css: ['./dist/vendor.min.css'],
-        output: './dist/vendor.purified.min.css'
-    });
-});
-
-function purifyCss(settings) {
-    purify = purify || require('purify-css');
-    fs = fs || require('fs');
-    var pure = purify(settings.src, settings.css, {write: false, info: true});
-
-    fs.writeFile(settings.output, pure, function (err) {
-        if (err) return err;
-    });
-}
-
 gulp.task('webserver', function () {
     connect = connect || require('gulp-connect');
 
@@ -212,7 +193,6 @@ gulp.task('watch', function () {
 gulp.task('build', function () {
     gulp.start('jade_and_js');
     gulp.start('stylus');
-    gulp.start('purify_css');
 });
 
 gulp.task('default', function () {

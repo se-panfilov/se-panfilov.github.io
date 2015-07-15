@@ -1,3 +1,5 @@
+angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<main-header></main-header><div class=\"page_content about_page\"><div class=container><h3>Hi there. It\'s still under construction yet.</h3></div></div>");
+$templateCache.put("header/header.html","<div class=header_bar><div class=container>asdasd</div></div>");}]);
 'use strict';
 
 angular.module('sp-io', [
@@ -11,9 +13,8 @@ angular.module('sp-io', [
     //external libs
     'angular-loading-bar',
     'ngAnimate',
-    'anim-in-out',
-    'ui.router',
-    'ui.bootstrap'
+    'ngMaterial',
+    'ui.router'
 ])
 
     .config(['$urlRouterProvider', function ($urlRouterProvider) {
@@ -66,5 +67,3 @@ angular.module('sp-io.header', [])
         };
     }])
 ;
-angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<main-header></main-header><div class=\"page_content about_page\"><div class=container><h3>Hi there. It\'s still under construction yet.</h3></div></div>");
-$templateCache.put("header/header.html","<div class=\"navbar pages_header\"><div class=navbar-inner><div class=container><button type=button ng-click=\"isNavbarCollapsed = !isNavbarCollapsed\" class=navbar-toggle><span class=icon-bar></span><span class=icon-bar></span><span class=icon-bar></span></button><div collapse=isNavbarCollapsed class=navbar-collapse><nav class=hidden-xs><div class=navbar-header><ul class=\"nav navbar-nav\"><li><a ui-sref=macros title=\"На главную\" class=navbar-brand>Sergey Panfilov</a></li></ul></div></nav></div></div></div></div>");}]);
