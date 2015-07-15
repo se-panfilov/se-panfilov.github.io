@@ -11,7 +11,6 @@ angular.module('sp-io', [
     'sp-io.pages.landing',
 
     //external libs
-    'angular-loading-bar',
     'ngAnimate',
     'ngMaterial',
     'ui.router'
