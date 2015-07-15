@@ -1,26 +1,28 @@
 @import 'nib'
 
-.pages_header
-  &.navbar
-    &.navbar_custom
-      background-color transparent
-      border 0
-      .container
-        background-color white_color
-        border-bottom 1px solid silver_color
-        .btn
-          color #777
-        .navbar-right
-          margin-right 10px
-    &.navbar-inverse
-      border-bottom orange_color
-      .dropdown
-        .btn-link
-          color #333
-          &:hover
-            color #333
+header_bg_color = white
+header_border_color = #edeeee
 
-.pages_header
-  .spacer
-    background-color orange_color
-    height 12px
+.header_bar
+  background-color header_bg_color
+  width 100%
+  border-bottom-color header_border_color
+  border-bottom-width 1px
+  order 1
+  padding: 0 20px
+  align-items: stretch;
+  box-sizing: border-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin: 0;
+  position: relative;
+  ul
+    list-style none
+    li
+      a
+        color #666
+        text-decoration none
+        padding 15px
