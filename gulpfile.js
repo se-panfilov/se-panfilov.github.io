@@ -1,5 +1,5 @@
 var gulp = require('gulp'), concat, rename, uglify, jade, sourcemaps, watch, jshint, changed, ngAnnotate, stylus,
-    nib, minifyHTML, cachebreaker, concatVendorCss, minifyCss, templateCache, mergeStream, purify, size, fs,
+    nib, minifyHTML, cachebreaker, minifyCss, templateCache, mergeStream, purify, size, fs,
     htmlhint, connect;
 
 var src = {
@@ -7,7 +7,7 @@ var src = {
         './src/common_styles/**/*.styl',
         './src/**/*.styl'
     ],
-    jade: {
+    jadeDirs: {
         main: [
             './*.jade'
         ],
@@ -17,11 +17,8 @@ var src = {
             './src/modules/**/*.jade'
         ]
     },
-    jsDir: './src/**/*.js',
-    mdDir: ['./src/posts/**/*.md']
+    jsDir: './src/**/*.js'
 };
-
-var postTemplate = 'src/templates/post.jade';
 
 var dest = {
     dist: './dist'
@@ -45,7 +42,7 @@ gulp.task('lint', function () {
 gulp.task('htmlhint', function () {
     jade = jade || require('gulp-jade');
     htmlhint = htmlhint || require('gulp-htmlhint');
-    var html = src.jade.templates.concat(src.jade.main);
+    var html = src.jadeDirs.templates.concat(src.jadeDirs.main);
 
     return gulp.src(html)
         .pipe(jade({pretty: false}))
@@ -78,8 +75,7 @@ function makeJade() {
     minifyHTML = minifyHTML || require('gulp-minify-html');
     templateCache = templateCache || require('gulp-angular-templatecache');
 
-    return gulp.src(src.jade.templates)
-        //TODO (S.Panfilov) check with changed pipe
+    return gulp.src(src.jadeDirs.templates)
         .pipe(changed(dest.dist, {extension: '.html'}))
         .pipe(jade({pretty: false}))
         .on('error', console.log)
@@ -141,7 +137,7 @@ gulp.task('jade_static_main', function () {
     minifyHTML = minifyHTML || require('gulp-minify-html');
     cachebreaker = cachebreaker || require('gulp-cache-breaker');
 
-    return gulp.src(src.jade.main)
+    return gulp.src(src.jadeDirs.main)
         .pipe(jade({pretty: false}))
         .on('error', console.log)
         .pipe(minifyHTML({
@@ -193,43 +189,11 @@ function purifyCss(settings) {
     });
 }
 
-gulp.task('vendor_js', function () {
-    concat = concat || require('gulp-concat');
-    rename = rename || require('gulp-rename');
-    uglify = uglify || require('gulp-uglify');
-    sourcemaps = sourcemaps || require('gulp-sourcemaps');
-
-    return gulp.src([
-        './bower_components/angular/angular.min.js',
-//TODO (S.Panfilov)
-    ])
-        .pipe(concat('vendor.js'))
-        .pipe(gulp.dest(dest.dist))
-        .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(rename({basename: 'vendor.min'}))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(dest.dist))
-});
-
-gulp.task('vendor_css', function () {
-    concat = concat || require('gulp-concat');
-    concatVendorCss = concatVendorCss || require('gulp-concat-css');
-    minifyCss = minifyCss || require('gulp-minify-css');
-
-    gulp.src([
-        //TODO (S.Panfilov)
-    ], {base: './dist'})
-        .pipe(concatVendorCss('vendor.min.css'))
-        .pipe(minifyCss())
-        .pipe(gulp.dest(dest.dist));
-});
-
 gulp.task('webserver', function () {
     connect = connect || require('gulp-connect');
 
     connect.server({
-        //root: [__dirname],
+        root: [__dirname],
         port: 8001,
         livereload: true
     });
@@ -238,17 +202,11 @@ gulp.task('webserver', function () {
 gulp.task('watch', function () {
     watch = watch || require('gulp-watch');
 
-    gulp.watch(src.jade.main, ['jade_static_main']);
-    gulp.watch(src.jade.templates, ['jade_static_templates']);
+    gulp.watch(src.jadeDirs.main, ['jade_static_main']);
+    gulp.watch(src.jadeDirs.templates, ['jade_static_templates']);
 
     gulp.watch(src.stylesDirs, ['stylus']);
     gulp.watch([src.jsDir], ['js']);
-});
-
-gulp.task('build_vendor', function () {
-    gulp.start('vendor_js');
-    gulp.start('vendor_css');
-    gulp.start('purify_css');
 });
 
 gulp.task('build', function () {
