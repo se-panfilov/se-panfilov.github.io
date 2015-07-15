@@ -1,5 +1,3 @@
-angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<main-header></main-header><div class=\"page_content about_page\"><div class=container><h3>Hi there. It\'s still under construction yet.</h3></div></div>");
-$templateCache.put("header/header.html","<nav class=header_bar><div class=container><ul><li><a href=\"\">Sergey Panfilov</a></li></ul></div></nav>");}]);
 'use strict';
 
 angular.module('sp-io', [
@@ -66,3 +64,5 @@ angular.module('sp-io.header', [])
         };
     }])
 ;
+angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<main-header></main-header><div class=\"page_content about_page\"><div class=container><h3>Hi there. It\'s still under construction yet.</h3></div></div>");
+$templateCache.put("header/header.html","<nav class=header_bar><div class=container><ul><li><a href=\"\">Sergey Panfilov</a></li></ul></div></nav>");}]);
