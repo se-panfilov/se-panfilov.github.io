@@ -108,5 +108,5 @@ angular.module('sp-io.contacts_list', [])
     })
 ;
 angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<div class=landing_page><div layout=row layout-align=\"center center\" class=label_photo><div class=avatar></div></div><main-header></main-header><div class=page_content><div class=container><h3>Hi there. It\'s still under construction yet.</h3><contacts-list></contacts-list></div></div></div>");
-$templateCache.put("landing/contacts_list/contacts_list.html","<section class=contacts><ul ng-repeat=\"contact in ::contacts track by $index\" class=contacts_list><li class=contact_item><i ng-class=::contact.icon></i>&nbsp;<a href=::contact.link ng-bind=::contact.title></a></li></ul></section>");
+$templateCache.put("landing/contacts_list/contacts_list.html","<section class=contacts><ul ng-repeat=\"contact in ::contacts track by $index\" class=contacts_list><li class=contact_item><md-button aria-label={{::contact.title}} class=md-fab><i ng-class=::contact.icon class=contact_icon></i></md-button>&nbsp;<a href=::contact.link ng-bind=::contact.title class=contact_link></a></li></ul></section>");
 $templateCache.put("header/header.html","<nav class=header_bar><div class=container><ul><li><a href=\"\">Sergey Panfilov</a></li></ul></div></nav>");}]);
