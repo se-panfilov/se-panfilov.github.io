@@ -30,9 +30,11 @@ angular.module('sp-io.pages.landing', [
 
     .controller('LandingPageCtrl', function ($scope) {
 
+
+
         $scope.skills = [
-            { title: "JS", name: "JavaScript", bgClass: 'red'},
-            { title: "ng", name: "Angularjs", bgClass: 'blue'}
+            {title: "JS", name: "JavaScript", bgClass: 'red'},
+            {title: "ng", name: "Angularjs", bgClass: 'blue'}
         ];
     })
 
