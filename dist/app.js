@@ -4,6 +4,7 @@ angular.module('sp-io', [
     //modules
     'sp-io.header',
     'sp-io.templates',
+    'sp-io.contacts_list',
 
     //pages
     'sp-io.pages.landing',
@@ -80,5 +81,32 @@ angular.module('sp-io.header', [])
         };
     }])
 ;
-angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<div class=landing_page><div layout=row layout-align=\"center center\" class=label_photo><div class=avatar></div></div><main-header></main-header><div class=page_content><div class=container><h3>Hi there. It\'s still under construction yet.</h3><section class=contacts><ul class=contacts_list><li><i class=\"fa fa-envelope\"></i>&nbsp;<a href=mailto:se-panfilov@ya.ru>se-panfilov@ya.ru</a></li><li><i class=\"fa fa-map-marker\"></i>&nbsp;<a href=\"https://maps.google.com/maps?q=Russia,+Irkutsk\">Russia, Irkutsk</a></li><li><i class=\"fa fa-github\"></i>&nbsp;<a href=https://github.com/se-panfilov>GitHub</a></li><li><i class=\"fa fa-stack-overflow\"></i>&nbsp;<a href=http://stackoverflow.com/users/930170/sergey-panfilov>StackOverFlow</a></li><li><i class=\"fa fa-facebook\"></i>&nbsp;<a href=https://www.facebook.com/sergey.panfilov.75>Facebook</a></li><li><i class=\"fa fa-vk\"></i>&nbsp;<a href=https://vk.com/se_panfilov>VK</a></li><li><i class=\"fa fa-linkedin\"></i>&nbsp;<a href=https://ru.linkedin.com/in/sepanfilov>LinkedIn</a></li></ul></section></div></div></div>");
+'use strict';
+
+angular.module('sp-io.contacts_list', [])
+
+    .directive('contactsList', function () {
+        return {
+            restrict: 'E',
+            scope: {},
+            replace: true,
+            templateUrl: 'landing/contacts_list/contacts_list.html',
+            link: function (scope) {
+
+                scope.contacts = [
+                    {icon: 'fa fa-envelope', link: 'mailto:se-panfilov@ya.ru', title: 'se-panfilov@ya.ru'} ,
+                    {icon: 'fa fa-map-marker', link: 'https://maps.google.com/maps?q=Russia,+Irkutsk', title: 'Russia, Irkutsk'},
+                    {icon: 'fa fa-github', link: 'https://github.com/se-panfilov', title: 'GitHub'},
+                    {icon: 'fa fa-stack-overflow', link: 'http://stackoverflow.com/users/930170/sergey-panfilov', title: 'StackOverFlow'},
+                    {icon: 'fa fa-facebook', link: 'https://www.facebook.com/sergey.panfilov.75', title: 'Facebook'},
+                    {icon: 'fa fa-vk', link: 'https://vk.com/se_panfilov', title: 'VK'},
+                    {icon: 'fa fa-linkedin', link: 'https://ru.linkedin.com/in/sepanfilov', title: 'linkedin'}
+                ];
+                
+            }
+        };
+    })
+;
+angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<div class=landing_page><div layout=row layout-align=\"center center\" class=label_photo><div class=avatar></div></div><main-header></main-header><div class=page_content><div class=container><h3>Hi there. It\'s still under construction yet.</h3><contacts-list></contacts-list></div></div></div>");
+$templateCache.put("landing/contacts_list/contacts_list.html","<section class=contacts><ul ng-repeat=\"contact in ::contacts track by $index\" class=contacts_list><li class=contact_item><i ng-class=::contact.icon></i>&nbsp;<a href=::contact.link ng-bind=::contact.title></a></li></ul></section>");
 $templateCache.put("header/header.html","<nav class=header_bar><div class=container><ul><li><a href=\"\">Sergey Panfilov</a></li></ul></div></nav>");}]);

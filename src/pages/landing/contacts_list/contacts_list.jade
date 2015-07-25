@@ -1,0 +1,6 @@
+section.contacts
+   ul.contacts_list(ng-repeat="contact in ::contacts track by $index")
+      li.contact_item
+         i(ng-class="::contact.icon")
+         | &nbsp;
+         a(href="::contact.link", ng-bind="::contact.title")

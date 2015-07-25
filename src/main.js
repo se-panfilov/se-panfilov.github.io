@@ -4,6 +4,7 @@ angular.module('sp-io', [
     //modules
     'sp-io.header',
     'sp-io.templates',
+    'sp-io.contacts_list',
 
     //pages
     'sp-io.pages.landing',
