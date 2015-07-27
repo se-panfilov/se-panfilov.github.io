@@ -5,6 +5,7 @@ angular.module('sp-io', [
     'sp-io.header',
     'sp-io.templates',
     'sp-io.contacts_list',
+    'sp-io.avatar',
 
     //pages
     'sp-io.pages.landing',
@@ -20,6 +21,33 @@ angular.module('sp-io', [
     }])
 ;
 
+'use strict';
+
+angular.module('sp-io.pages.landing', [
+    'ui.router'
+])
+
+    .config(['$stateProvider', function ($stateProvider) {
+
+        $stateProvider
+            .state('landing', {
+                url: '/landing',
+                templateUrl: 'landing/landing.html',
+                controller: 'LandingPageCtrl'
+            })
+        ;
+    }])
+
+    .controller('LandingPageCtrl', ['$scope', function ($scope) {
+
+        $scope.skills = [
+            {title: "JS", name: "JavaScript", bgClass: 'red'},
+            {title: "ng", name: "Angularjs", bgClass: 'blue'}
+        ];
+    }])
+
+
+;
 'use strict';
 
 angular.module('sp-io.header', [])
@@ -41,45 +69,19 @@ angular.module('sp-io.header', [])
 ;
 'use strict';
 
-angular.module('sp-io.pages.landing', [
-    'ui.router'
-])
+angular.module('sp-io.avatar', [])
 
-    .config(['$stateProvider', function ($stateProvider) {
-        //$mdIconProvider.iconSet('avatar', 'icons/avatar-icons.svg', 128);
-
-        //'#673AB7',
-        //    '#EDE7F6',
-        //    '#D1C4E9',
-        //    '#B39DDB',
-        //    '#9575CD',
-        //    '#7E57C2',
-        //    '#673AB7',
-        //    '#5E35B1',
-        //    '#512DA8',
-        //    '#4527A0',
-        //    '#311B92'
-
-        $stateProvider
-            .state('landing', {
-                url: '/landing',
-                templateUrl: 'landing/landing.html',
-                controller: 'LandingPageCtrl'
-            })
-        ;
-    }])
-
-    .controller('LandingPageCtrl', ['$scope', function ($scope) {
-
-
-
-        $scope.skills = [
-            {title: "JS", name: "JavaScript", bgClass: 'red'},
-            {title: "ng", name: "Angularjs", bgClass: 'blue'}
-        ];
-    }])
-
-
+    .directive('avatar', function () {
+        return {
+            restrict: 'E',
+            scope: {},
+            replace: true,
+            templateUrl: 'landing/avatar/avatar.html',
+            link: function (scope) {
+                //
+            }
+        };
+    })
 ;
 'use strict';
 
@@ -107,6 +109,7 @@ angular.module('sp-io.contacts_list', [])
         };
     })
 ;
-angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<div class=landing_page><div layout=row layout-align=\"center center\" class=label_photo><div class=avatar></div></div><main-header></main-header><div class=page_content><div class=container><h3>Hi there. It\'s still under construction yet.</h3><contacts-list></contacts-list></div></div></div>");
+angular.module("sp-io.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("landing/landing.html","<div class=landing_page><div layout=row layout-align=\"center center\" class=label_photo><avatar></avatar></div><main-header></main-header><div class=page_content><div class=container><h3>Hi there. It\'s still under construction yet.</h3><contacts-list></contacts-list></div></div></div>");
+$templateCache.put("landing/avatar/avatar.html","<div class=avatar><h1 title=\"Sergey Panfilov\" class=a_label>S.P.</h1><span class=a_description>No avatar yet</span></div>");
 $templateCache.put("landing/contacts_list/contacts_list.html","<section class=contacts><ul class=contacts_list><li ng-repeat=\"contact in ::contacts track by $index\" class=contact_item><md-button type=button ng-href={{::contact.link}} aria-label={{::contact.title}} class=md-fab><i ng-class=::contact.icon class=contact_icon></i></md-button>&nbsp;<a ng-href={{::contact.link}} ng-bind=::contact.title class=contact_link></a></li></ul></section>");
 $templateCache.put("header/header.html","<nav class=header_bar><div class=container><ul><li><a href=\"\">Sergey Panfilov</a></li></ul></div></nav>");}]);

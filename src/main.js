@@ -5,6 +5,7 @@ angular.module('sp-io', [
     'sp-io.header',
     'sp-io.templates',
     'sp-io.contacts_list',
+    'sp-io.avatar',
 
     //pages
     'sp-io.pages.landing',
