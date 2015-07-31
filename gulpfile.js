@@ -12,7 +12,6 @@ var src = {
             './*.jade'
         ],
         templates: [
-            './src/pages/**/*.jade',
             './src/partials/**/*.jade',
             './src/modules/**/*.jade'
         ]

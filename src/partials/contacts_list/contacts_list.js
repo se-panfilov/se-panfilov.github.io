@@ -19,7 +19,7 @@ angular.module('sp-io.contacts_list', [])
                     {icon: 'fa fa-vk', link: 'https://vk.com/se_panfilov', title: 'VK'},
                     {icon: 'fa fa-linkedin', link: 'https://ru.linkedin.com/in/sepanfilov', title: 'LinkedIn'}
                 ];
-                
+
             }
         };
     })

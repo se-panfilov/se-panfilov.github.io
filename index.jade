@@ -16,9 +16,9 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         link(href="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css", rel='stylesheet', media='all')
         link(href='{{cache-break:dist/app.min.css}}', rel='stylesheet', media='all')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
-        link(rel='shortcut icon', href='img/ico/favicon.ico')
-        link(rel='icon', href='img/ico/favicon.ico', type='image/x-icon')
-        link(rel='shortcut icon', href='img/ico/favicon.ico', type='image/x-icon')
+        //link(rel='shortcut icon', href='img/ico/favicon.ico')
+        //link(rel='icon', href='img/ico/favicon.ico', type='image/x-icon')
+        //link(rel='shortcut icon', href='img/ico/favicon.ico', type='image/x-icon')
         //link(rel='apple-touch-icon-precomposed', sizes='144x144', href='img/ico/apple-touch-icon-144x144-precomposed.png')
         //link(rel='apple-touch-icon-precomposed', sizes='76x76', href='img/ico/apple-touch-icon-76x76-precomposed.png')
         //link(rel='apple-touch-icon-precomposed', sizes='114x114', href='img/ico/apple-touch-icon-114x114-precomposed.png')
@@ -31,7 +31,6 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         .content
             .label_photo(layout="row", layout-align="center center")
                 avatar
-            main-header
             .page_content
                 .container
                     h3 Hi there. It's still under construction yet.
@@ -40,11 +39,4 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min.js")
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-aria.min.js")
         script(src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js")
-        script(src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js")
         script(src='{{cache-break:dist/app.js}}', type='text/javascript')
-        <!--[if lt IE 9]>
-        script(src='//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.js', type='text/javascript')
-        script.
-            document.createElement('ui-view');
-            document.createElement('ui:view');
-        <![endif]-->
