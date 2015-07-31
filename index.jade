@@ -31,6 +31,21 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         .index_page(ng-controller="IndexPageCtrl")
             .label_photo(layout="row", layout-align="center center")
                 avatar
+            .sub_bar
+                .container
+                    ul.sub_bar_items
+                        li.item
+                            h3(aria-label="Site Owner's Name") Sergey Panfilov
+                        li.item
+                            a(
+                            href="https://maps.google.com/maps?q=Russia,+Irkutsk",
+                            title="View on google-map",
+                            aria-label="View Russia, Irkutsk location on google maps",
+                            target="blank"
+                            )
+                                i.fa.fa-map-marker
+                                | &nbsp;
+                                | Russia, Irkutsk
             .page_content
                 .container
                     h3 Hi there. It's still under construction yet.
