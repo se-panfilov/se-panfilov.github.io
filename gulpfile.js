@@ -5,7 +5,8 @@ var gulp = require('gulp'), concat, rename, uglify, jade, sourcemaps, watch, jsh
 var src = {
     stylesDirs: [
         './src/common_styles/**/*.styl',
-        './src/**/*.styl'
+        './src/**/*.styl',
+        './index.styl'
     ],
     jadeDirs: {
         main: [
@@ -16,7 +17,10 @@ var src = {
             './src/modules/**/*.jade'
         ]
     },
-    jsDir: './src/**/*.js'
+    jsDirs: [
+        './src/**/*.js',
+        './index.js'
+    ]
 };
 
 var dest = {
@@ -26,7 +30,7 @@ var dest = {
 gulp.task('lint', function () {
     jshint = jshint || require('gulp-jshint');
 
-    return gulp.src(src.jsDir)
+    return gulp.src(src.jsDirs)
         .pipe(jshint({
             globalstrict: true,
             strict: false,
@@ -93,7 +97,7 @@ function makeJS() {
     changed = changed || require('gulp-changed');
     ngAnnotate = ngAnnotate || require('gulp-ng-annotate');
 
-    return gulp.src([src.jsDir])
+    return gulp.src(src.jsDirs)
         .pipe(changed(dest.dist))
         .pipe(concat('app.js'))
         .pipe(ngAnnotate({remove: true, add: true, single_quotes: true}))
@@ -186,7 +190,7 @@ gulp.task('watch', function () {
     gulp.watch(src.jadeDirs.templates, ['jade_static_templates']);
 
     gulp.watch(src.stylesDirs, ['stylus']);
-    gulp.watch([src.jsDir], ['js']);
+    gulp.watch(src.jsDirs, ['js']);
 });
 
 gulp.task('build', function () {

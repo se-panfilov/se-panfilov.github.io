@@ -6,6 +6,8 @@ angular.module('sp-io', [
     'sp-io.contacts_list',
     'sp-io.avatar',
 
+    'sp-io.index.page',
+
     //external libs
     'ngAnimate',
     'ngMaterial'
