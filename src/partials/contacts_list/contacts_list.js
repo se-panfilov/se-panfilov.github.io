@@ -7,7 +7,7 @@ angular.module('sp-io.contacts_list', [])
             restrict: 'E',
             scope: {},
             replace: true,
-            templateUrl: 'landing/contacts_list/contacts_list.html',
+            templateUrl: 'contacts_list/contacts_list.html',
             link: function (scope) {
 
                 scope.contacts = [

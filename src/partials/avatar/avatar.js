@@ -7,7 +7,7 @@ angular.module('sp-io.avatar', [])
             restrict: 'E',
             scope: {},
             replace: true,
-            templateUrl: 'landing/avatar/avatar.html',
+            templateUrl: 'avatar/avatar.html',
             link: function (scope) {
                 //
             }
