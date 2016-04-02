@@ -27,24 +27,9 @@ html(xmlns:ng='http://angularjs.org')
         title Sergey Panfilov
     body
         .index_page
-            .label_photo(layout="row", layout-align="center center")
-                avatar
-            .sub_bar
-                ul.sub_bar_items
-                    li.item
-                        h3.md-subhead(aria-label="Site Owner's Name") Sergey Panfilov
-                    li.item
-                        a(
-                        href="https://maps.google.com/maps?q=Russia,+Irkutsk",
-                        title="View on google-map",
-                        aria-label="View Russia, Irkutsk location on google maps",
-                        target="blank"
-                        )
-                            i.fa.fa-map-marker
-                            | &nbsp;
-                            | Russia, Irkutsk
-            .page_content
-                contacts-list
+            .outer_box
+                .inner_box
+                    .name Sergey Panfilov
         //script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js")
         //script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min.js")
         //script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-aria.min.js")

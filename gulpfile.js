@@ -81,11 +81,10 @@ function makeJade() {
     return gulp.src(src.jadeDirs.templates)
         .pipe(changed(dest.dist, {extension: '.html'}))
         .pipe(jade({pretty: false}))
-        .on('error', console.log)
-        .pipe(minifyHTML({
-            empty: true,
-            spare: true
-        }))
+        // .pipe(minifyHTML({
+        //     empty: true,
+        //     spare: true
+        // }))
         .pipe(templateCache({
             module: 'sp-io.templates',
             standalone: true
@@ -137,18 +136,16 @@ gulp.task('jade_static_templates', function () {
 
 gulp.task('jade_static_main', function () {
     jade = jade || require('gulp-jade');
-    minifyHTML = minifyHTML || require('gulp-minify-html');
+    //minifyHTML = minifyHTML || require('gulp-minify-html');
     cachebreaker = cachebreaker || require('gulp-cache-breaker');
 
     return gulp.src(src.jadeDirs.main)
         .pipe(jade({pretty: false}))
-        .on('error', console.log)
-        .pipe(minifyHTML({
-            empty: true,
-            spare: true
-        }))
-        .pipe(cachebreaker())
-        .on('error', console.log)
+        // .pipe(minifyHTML({
+        //     empty: true,
+        //     spare: true
+        // }))
+        //.pipe(cachebreaker())
         .pipe(gulp.dest('./'));
 });
 
