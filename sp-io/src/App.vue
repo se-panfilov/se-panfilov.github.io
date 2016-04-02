@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
     <hello></hello>
     <p>
       Welcome to your Vue.js app. To get started, take a look at the
@@ -21,36 +20,36 @@
 </template>
 
 <script>
-import Hello from './components/Hello'
+  import Hello from './components/Hello'
 
-export default {
-  components: {
-    Hello
+  export default {
+    components: {
+      Hello
+    }
   }
-}
 </script>
 
 <style>
-html {
-  height: 100%;
-}
+  html {
+    height: 100%;
+  }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 
-#app {
-  margin-top: -100px;
-  max-width: 600px;
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-}
+  #app {
+    margin-top: -100px;
+    max-width: 600px;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+  }
 
-.logo {
-  width: 100px;
-  height: 100px
-}
+  .logo {
+    width: 100px;
+    height: 100px
+  }
 </style>
