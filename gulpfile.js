@@ -64,12 +64,12 @@ gulp.task('htmlhint', function () {
 });
 
 gulp.task('sizes_dist', function () {
-    size = size || require('gulp-filesize');
+    size = size || require('gulp-ize');
 
     return gulp.src([
         './dist/**/*.js',
         './dist/**/*.css'
-    ]).pipe(size());
+    ]).pipe(size({showFiles: true, showTotal: true}));
 });
 
 function makeJade() {
