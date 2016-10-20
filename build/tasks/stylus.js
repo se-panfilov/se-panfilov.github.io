@@ -1,11 +1,15 @@
 'use strict'
 
+const gulp = require('gulp')
+
 const config = require('../config')
 const nib = require('nib')
 const minifyCss = require('gulp-minify-css')
 const concat = require('gulp-concat')
 //changed = require('gulp-changed')
 const stylus = require('gulp-stylus')
+const plumber = require('gulp-plumber')
+const notify = require('gulp-notify')
 
 gulp.task('stylus', () => {
   return gulp.src(config.styles.src)

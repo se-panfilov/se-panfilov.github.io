@@ -14,6 +14,6 @@ gulp.task('default', () => {
 gulp.task('watch', () => {
   const watch = require('gulp-watch')
   gulp.watch(config.js.src, ['es5', 'es6', 'todo'])
-  gulp.watch(config.jade.src, ['jade'])
-  gulp.watch(config.stylus.src, ['stylus'])
+  // gulp.watch(config.jade.src, ['jade'])
+  // gulp.watch(config.stylus.src, ['stylus'])
 })

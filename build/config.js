@@ -21,7 +21,7 @@ const config = {
   },
   jade: {
     src: [
-      SRC + '/**/*.styl'
+      SRC + '/**/*.jade'
     ]
   },
   tests: {

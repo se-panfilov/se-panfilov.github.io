@@ -9,7 +9,6 @@ const concat = require('gulp-concat')
 const rename = require('gulp-rename')
 const notify = require('gulp-notify')
 const plumber = require('gulp-plumber')
-const source = require('vinyl-source-stream')
 const stripCode = require('gulp-strip-code')
 
 gulp.task('es5', () => {
