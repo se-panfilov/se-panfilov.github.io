@@ -1,0 +1,15 @@
+{
+  "name": "granim",
+  "homepage": "https://github.com/sarcadass/granim.js",
+  "version": "1.0.31",
+  "_release": "1.0.31",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.31",
+    "commit": "da705b3c398fcf0571a2b353d5ae71c78062ce56"
+  },
+  "_source": "https://github.com/sarcadass/granim.js.git",
+  "_target": "^1.0.31",
+  "_originalSource": "granim",
+  "_direct": true
+}

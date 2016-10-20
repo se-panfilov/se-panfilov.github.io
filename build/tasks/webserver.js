@@ -4,9 +4,9 @@ const gulp = require('gulp')
 const config = require('../config')
 const connect = require('gulp-connect')
 
-gulp.task('dev_webserver', function () {
+gulp.task('webserver', function () {
   return connect.server({
-    root: [__dirname],
+    root: ['./'],
     port: 8001,
     livereload: true
   })

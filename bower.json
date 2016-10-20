@@ -27,5 +27,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "granim": "^1.0.31"
+  }
 }

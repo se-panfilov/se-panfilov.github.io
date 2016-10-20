@@ -24,6 +24,6 @@ gulp.task('jade', () => {
       empty: true,
       spare: true
     }))
-    // .pipe(cachebreaker()) // TODO (S.Panfilov)fix it
+    // .pipe(cachebreaker()) // TODO (S.Panfilov)
     .pipe(gulp.dest('./'))
 })

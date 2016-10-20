@@ -10,8 +10,8 @@ html
         //meta(name='msapplication-wide310x150logo', content='img/ico/widetile.png')
         //meta(name='msapplication-square310x310logo', content='img/ico/largetile.png')
         //link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
-        //link(href='app.min.css', rel='stylesheet', media='all')
-        //link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
+        link(href='dist/se-panfilov.min.css', rel='stylesheet', media='all')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
         //link(rel='shortcut icon', href='img/ico/favicon.ico')
         //link(rel='icon', href='img/ico/favicon.ico', type='image/x-icon')
         //link(rel='shortcut icon', href='img/ico/favicon.ico', type='image/x-icon')
@@ -24,11 +24,15 @@ html
         //link(rel='apple-touch-icon-precomposed', href='img/ico/apple-touch-icon-57x57-precomposed.png')
         title Sergey Panfilov
     body
-        .index_page
-            div#large-header.large-header
-                canvas#demo-canvas
-                    h1.main-title Connect
-                        span.thin Three
-        //script(src='{{cache-break:dist/app.js}}', type='text/javascript')
-        //script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js', type='text/javascript')
+        .index-page
+            div.header
+              h1.main-title Sergei Panfilov
+                //canvas#granim-canvas
+                .sandbox.canvas-image-wrapper
+                  .bloc-logo
+                    canvas#logo-canvas(width="130" height="49")
+                    a.logo-mask(href="index.html") Granim.js
+        //script(src='{{cache-break:dist/se-panfilov.es5.min.js}}', type='text/javascript')
+        script(src='bower_components/granim/dist/granim.min.js', type='text/javascript')
+        script(src='dist/se-panfilov.es5.min.js', type='text/javascript')
         script(src='index.js', type='text/javascript')
