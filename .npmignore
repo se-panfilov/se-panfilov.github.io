@@ -1,0 +1,8 @@
+/src/
+.babelrc
+.eslintrc
+*.log
+node_modules/
+.tmp
+.DS_Store
+.idea

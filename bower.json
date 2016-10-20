@@ -1,0 +1,31 @@
+{
+  "name": "se-panfilov.github.io",
+  "version": "0.0.3",
+  "private": true,
+  "description": "Sergey Panfilov's personal site",
+  "main": "index.html",
+  "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
+  "license": "GNU2",
+  "keywords": [
+    "personal",
+    "blog",
+    "Sergey",
+    "Sergei",
+    "Panfilov",
+    "javascript",
+    "coffeescript",
+    "typescript",
+    "jade",
+    "developer",
+    "angularjs",
+    "nodejs"
+  ],
+  "homepage": "se-panfilov.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

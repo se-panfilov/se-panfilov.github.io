@@ -1,21 +1,17 @@
 doctype html
-html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
+html
     head
         meta(charset='UTF-8')
         meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
-        meta(name='keywords', content='Avalanche')
         meta(http-equiv='Cache-Control', content='no-cache')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         //meta(name='msapplication-square70x70logo', content='img/ico/smalltile.png')
         //meta(name='msapplication-square150x150logo', content='img/ico/mediumtile.png')
         //meta(name='msapplication-wide310x150logo', content='img/ico/widetile.png')
         //meta(name='msapplication-square310x310logo', content='img/ico/largetile.png')
-        meta(name='application-name', content='Avalanche')
-        link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel="stylesheet")
         //link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
-        link(href="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css", rel='stylesheet', media='all')
-        link(href='{{cache-break:dist/app.min.css}}', rel='stylesheet', media='all')
-        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
+        //link(href='app.min.css', rel='stylesheet', media='all')
+        //link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
         //link(rel='shortcut icon', href='img/ico/favicon.ico')
         //link(rel='icon', href='img/ico/favicon.ico', type='image/x-icon')
         //link(rel='shortcut icon', href='img/ico/favicon.ico', type='image/x-icon')
@@ -28,27 +24,11 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         //link(rel='apple-touch-icon-precomposed', href='img/ico/apple-touch-icon-57x57-precomposed.png')
         title Sergey Panfilov
     body
-        .index_page(ng-controller="IndexPageCtrl")
-            .label_photo(layout="row", layout-align="center center")
-                avatar
-            .sub_bar
-                ul.sub_bar_items
-                    li.item
-                        h3.md-subhead(aria-label="Site Owner's Name") Sergey Panfilov
-                    li.item
-                        a(
-                        href="https://maps.google.com/maps?q=Russia,+Irkutsk",
-                        title="View on google-map",
-                        aria-label="View Russia, Irkutsk location on google maps",
-                        target="blank"
-                        )
-                            i.fa.fa-map-marker
-                            | &nbsp;
-                            | Russia, Irkutsk
-            .page_content
-                contacts-list
-        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js")
-        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min.js")
-        script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-aria.min.js")
-        script(src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js")
-        script(src='{{cache-break:dist/app.js}}', type='text/javascript')
+        .index_page
+            div#large-header.large-header
+                canvas#demo-canvas
+                    h1.main-title Connect
+                        span.thin Three
+        //script(src='{{cache-break:dist/app.js}}', type='text/javascript')
+        //script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js', type='text/javascript')
+        script(src='index.js', type='text/javascript')
