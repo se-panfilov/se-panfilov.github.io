@@ -29,22 +29,20 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         title Sergey Panfilov
     body
         .index_page(ng-controller="IndexPageCtrl")
-            .label_photo(layout="row", layout-align="center center")
-                avatar
             .sub_bar
                 ul.sub_bar_items
                     li.item
                         h3.md-subhead(aria-label="Site Owner's Name") Sergey Panfilov
                     li.item
                         a(
-                        href="https://maps.google.com/maps?q=Russia,+Irkutsk",
+                        href="https://maps.google.com/maps?q=Malta",
                         title="View on google-map",
-                        aria-label="View Russia, Irkutsk location on google maps",
+                        aria-label="View Malta location on google maps",
                         target="blank"
                         )
                             i.fa.fa-map-marker
                             | &nbsp;
-                            | Russia, Irkutsk
+                            | Malta
             .page_content
                 contacts-list
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js")

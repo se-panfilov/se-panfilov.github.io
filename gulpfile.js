@@ -43,7 +43,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('htmlhint', function () {
-    jade = jade || require('gulp-jade');
+    jade = jade || require('gulp-pug');
     htmlhint = htmlhint || require('gulp-htmlhint');
     var html = src.jadeDirs.templates.concat(src.jadeDirs.main);
 
@@ -73,7 +73,7 @@ gulp.task('sizes_dist', function () {
 });
 
 function makeJade() {
-    jade = jade || require('gulp-jade');
+    jade = jade || require('gulp-pug');
     changed = changed || require('gulp-changed');
     minifyHTML = minifyHTML || require('gulp-minify-html');
     templateCache = templateCache || require('gulp-angular-templatecache');
@@ -81,7 +81,6 @@ function makeJade() {
     return gulp.src(src.jadeDirs.templates)
         .pipe(changed(dest.dist, {extension: '.html'}))
         .pipe(jade({pretty: false}))
-        .on('error', console.log)
         .pipe(minifyHTML({
             empty: true,
             spare: true
@@ -136,19 +135,17 @@ gulp.task('jade_static_templates', function () {
 });
 
 gulp.task('jade_static_main', function () {
-    jade = jade || require('gulp-jade');
+    jade = jade || require('gulp-pug');
     minifyHTML = minifyHTML || require('gulp-minify-html');
     cachebreaker = cachebreaker || require('gulp-cache-breaker');
 
     return gulp.src(src.jadeDirs.main)
         .pipe(jade({pretty: false}))
-        .on('error', console.log)
-        .pipe(minifyHTML({
-            empty: true,
-            spare: true
-        }))
-        .pipe(cachebreaker())
-        .on('error', console.log)
+        // .pipe(minifyHTML({
+        //     empty: true,
+        //     spare: true
+        // }))
+        // .pipe(cachebreaker())
         .pipe(gulp.dest('./'));
 });
 
