@@ -1,9 +1,9 @@
 section.contacts(aria-label="Contact list")
-    ul.contacts_list(flex="", layout-gt-md="row", layout-md="col", layout-margin, layout-fill, layout-padding, layout-wrap)
-        li.contact_item(flex="30", ng-repeat="contact in ::contacts track by $index")
+    ul.contacts_list
+        li.contact_item(ng-repeat="contact in ::contacts track by $index")
             .contact_item_text
-                md-button.md-fab.md-primary(type="button", ng-href="{{::contact.link}}", aria-label="{{::contact.title}}")
+                div(type="button", ng-href="{{::contact.link}}", aria-label="{{::contact.title}}")
                     i.contact_icon(ng-class="::contact.icon")
                     //i.material-icons.md-48 face
-                | &nbsp;
-                a.contact_link(ng-href="{{::contact.link}}", ng-bind="::contact.title")
+                    | &nbsp;
+                    a.contact_link(ng-href="{{::contact.link}}", ng-bind="::contact.title")

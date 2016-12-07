@@ -1,11 +1,10 @@
-angular.module('sp-io.templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('contacts_list/contacts_list.html','<section class=contacts aria-label="Contact list"><ul class=contacts_list flex="" layout-gt-md=row layout-md=col layout-margin=layout-margin layout-fill=layout-fill layout-padding=layout-padding layout-wrap=layout-wrap><li class=contact_item flex=30 ng-repeat="contact in ::contacts track by $index"><div class=contact_item_text><md-button class="md-fab md-primary" type=button ng-href={{::contact.link}} aria-label={{::contact.title}}><i class=contact_icon ng-class=::contact.icon></i></md-button>&nbsp;<a class=contact_link ng-href={{::contact.link}} ng-bind=::contact.title></a></div></li></ul></section>');}]);
+angular.module('sp-io.templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('contacts_list/contacts_list.html','<section class=contacts aria-label="Contact list"><ul class=contacts_list><li class=contact_item ng-repeat="contact in ::contacts track by $index"><div class=contact_item_text><div type=button ng-href={{::contact.link}} aria-label={{::contact.title}}><i class=contact_icon ng-class=::contact.icon></i>&nbsp;<a class=contact_link ng-href={{::contact.link}} ng-bind=::contact.title></a></div></div></li></ul></section>');}]);
 'use strict';
 
 angular.module('sp-io', [
     //modules
     'sp-io.templates',
     'sp-io.contacts_list',
-    'sp-io.avatar',
 
     'sp-io.index.page',
 

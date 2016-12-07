@@ -141,10 +141,10 @@ gulp.task('jade_static_main', function () {
 
     return gulp.src(src.jadeDirs.main)
         .pipe(jade({pretty: false}))
-        // .pipe(minifyHTML({
-        //     empty: true,
-        //     spare: true
-        // }))
+        .pipe(minifyHTML({
+            empty: true,
+            spare: true
+        }))
         // .pipe(cachebreaker())
         .pipe(gulp.dest('./'));
 });
