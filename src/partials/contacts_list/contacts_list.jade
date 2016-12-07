@@ -1,9 +1,8 @@
 section.contacts(aria-label="Contact list")
-    ul.contacts_list
-        li.contact_item(ng-repeat="contact in ::contacts track by $index")
-            .contact_item_text
-                div(type="button", ng-href="{{::contact.link}}", aria-label="{{::contact.title}}")
-                    i.contact_icon(ng-class="::contact.icon")
-                    //i.material-icons.md-48 face
-                    | &nbsp;
-                    a.contact_link(ng-href="{{::contact.link}}", ng-bind="::contact.title")
+    .flex-container
+        .row
+            .title Sergey Panfilov
+            a.flex-item(ng-repeat="contact in ::contacts track by $index" ng-href="{{::contact.link}}")
+                i.contact_icon(ng-class="::contact.icon")
+                | &nbsp;
+                span(ng-bind="::contact.title")

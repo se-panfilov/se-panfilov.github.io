@@ -1,14 +1,53 @@
-.contacts_list
-  list-style none
-  padding-left 80px
-  .contact_item
+text_color = #6a6a6a
+
+.contacts
+
+  .flex-container
+    height 100%
+    padding 0
+    padding-top 80px
+    margin 0
+    display flex
+    align-items center
+    justify-content center
+
+  .row
+    width auto
+    background-color #FFF
+    border 1px solid #ddd
+    border-radius 5px
+    min-width 350px
+
+  .flex-item
     text-align left
-    .contact_item_text
-      text-align left
-      display inline-block
-      width 200px
-      .contact_icon
-        font-size 24px
-        line-height 52px
-      .contact_link
-        color #4f5458
+    color text_color
+    padding 15px
+    border-left 4px solid white
+    transition all ease 0.5s
+    text-decoration none
+    font-size 18px
+    font-weight 300
+    font-style normal
+    display block
+    border-bottom 1px solid #EEE
+    &:hover
+      &:first-child
+        border-top-left-radius 5px
+      &:nth-child(1n)
+        border-left-color #2979ff
+        color #2979ff
+      &:nth-child(2n)
+        border-left-color #00a99d
+        color #00a99d
+      &:nth-child(3n)
+        border-left-color #8e24aa
+        color #8e24aa
+      &:last-child
+        border-bottom-left-radius 5px
+  .title
+    text-align center
+    padding 15px
+    font-size 20px
+    font-weight 300
+    font-style normal
+    color text_color

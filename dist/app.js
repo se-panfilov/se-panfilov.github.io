@@ -1,16 +1,11 @@
-angular.module('sp-io.templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('contacts_list/contacts_list.html','<section class=contacts aria-label="Contact list"><ul class=contacts_list><li class=contact_item ng-repeat="contact in ::contacts track by $index"><div class=contact_item_text><div type=button ng-href={{::contact.link}} aria-label={{::contact.title}}><i class=contact_icon ng-class=::contact.icon></i>&nbsp;<a class=contact_link ng-href={{::contact.link}} ng-bind=::contact.title></a></div></div></li></ul></section>');}]);
+angular.module('sp-io.templates', []).run(['$templateCache', function($templateCache) {$templateCache.put('contacts_list/contacts_list.html','<section class=contacts aria-label="Contact list"><div class=flex-container><div class=row><div class=title>Sergey Panfilov</div><a class=flex-item ng-repeat="contact in ::contacts track by $index" ng-href={{::contact.link}}><i class=contact_icon ng-class=::contact.icon></i>&nbsp;<span ng-bind=::contact.title></span></a></div></div></section>');}]);
 'use strict';
 
 angular.module('sp-io', [
     //modules
     'sp-io.templates',
     'sp-io.contacts_list',
-
-    'sp-io.index.page',
-
-    //external libs
-    'ngAnimate',
-    'ngMaterial'
+    'sp-io.index.page'
 ])
 
 ;

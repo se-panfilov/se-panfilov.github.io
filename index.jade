@@ -13,7 +13,6 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         meta(name='application-name', content='Avalanche')
         link(href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel="stylesheet")
         //link(href="//fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
-        link(href="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css", rel='stylesheet', media='all')
         link(href='dist/app.min.css', rel='stylesheet', media='all')
         link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&subset=latin,cyrillic', type='text/css')
         //link(rel='shortcut icon', href='img/ico/favicon.ico')
@@ -29,24 +28,9 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='sp-io', ng-strict-di)
         title Sergey Panfilov
     body
         .index_page(ng-controller="IndexPageCtrl")
-            .sub_bar
-                ul.sub_bar_items
-                    li.item
-                        h3.md-subhead(aria-label="Site Owner's Name") Sergey Panfilov
-                    li.item
-                        a(
-                        href="https://maps.google.com/maps?q=Malta",
-                        title="View on google-map",
-                        aria-label="View Malta location on google maps",
-                        target="blank"
-                        )
-                            i.fa.fa-map-marker
-                            | &nbsp;
-                            | Malta
             .page_content
                 contacts-list
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js")
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min.js")
         script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-aria.min.js")
-        script(src="//ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js")
         script(src='dist/app.js', type='text/javascript')
