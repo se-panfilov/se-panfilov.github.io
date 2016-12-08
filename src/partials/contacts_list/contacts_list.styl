@@ -1,5 +1,9 @@
 text_color = #6a6a6a
 
+blue_color = #2979ff
+green_color = #00a99d
+purple_color = #8e24aa
+
 .contacts
 
   .flex-container
@@ -23,7 +27,7 @@ text_color = #6a6a6a
     color text_color
     padding 15px
     border-left 4px solid white
-    transition all ease 0.5s
+    transition all ease 1s
     text-decoration none
     font-size 18px
     font-weight 300
@@ -31,22 +35,24 @@ text_color = #6a6a6a
     display block
     border-bottom 1px solid #EEE
     &:hover
-      &:first-child
-        border-top-left-radius 5px
       &:nth-child(1n)
-        border-left-color #2979ff
-        color #2979ff
+        border-left-color blue_color
+        color blue_color
+        background: linear-gradient(to left, blue_color, white);
       &:nth-child(2n)
-        border-left-color #00a99d
-        color #00a99d
+        background-position 100px
+        border-left-color green_color
+        color green_color
+        background: linear-gradient(to left, green_color, white);
       &:nth-child(3n)
-        border-left-color #8e24aa
-        color #8e24aa
+        border-left-color purple_color
+        color purple_color
+        background: linear-gradient(to left, purple_color, white);
       &:last-child
         border-bottom-left-radius 5px
   .title
     text-align center
-    padding 15px
+    padding 25px
     font-size 20px
     font-weight 300
     font-style normal
