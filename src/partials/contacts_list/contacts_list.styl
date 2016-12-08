@@ -34,22 +34,45 @@ purple_color = #8e24aa
     font-style normal
     display block
     border-bottom 1px solid #EEE
+    background-color #FFF
+    position relative
+    span, i
+      position relative
+      z-index 3
     &:hover
-      &:nth-child(1n)
-        border-left-color blue_color
+      &:after
+        opacity 1
+    &:after
+      position absolute
+      content ''
+      top 0
+      left 0
+      width 100%
+      height 100%
+      transition opacity 0.5s ease-out
+      z-index 2
+      opacity 0
+    &:nth-of-type(1n)
+      &:hover
         color blue_color
-        background: linear-gradient(to left, blue_color, white);
-      &:nth-child(2n)
-        background-position 100px
-        border-left-color green_color
+        border-left-color blue_color
+      &:after
+        background-image linear-gradient(to left, blue_color, white)
+    &:nth-of-type(2n)
+      &:hover
         color green_color
-        background: linear-gradient(to left, green_color, white);
-      &:nth-child(3n)
-        border-left-color purple_color
+        border-left-color green_color
+      &:after
+        background-image linear-gradient(to left, green_color, white)
+    &:nth-of-type(3n)
+      &:hover
         color purple_color
-        background: linear-gradient(to left, purple_color, white);
-      &:last-child
-        border-bottom-left-radius 5px
+        border-left-color purple_color
+      &:after
+        background-image linear-gradient(to left, purple_color, white)
+    &:last-of-type
+      //border-left-color blue_color
+      border-bottom-left-radius 5px
   .title
     text-align center
     padding 25px
@@ -57,3 +80,4 @@ purple_color = #8e24aa
     font-weight 300
     font-style normal
     color text_color
+
