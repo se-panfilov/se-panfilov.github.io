@@ -1,8 +1,0 @@
-section.contacts(aria-label="Contact list")
-    .flex-container
-        .row
-            .title Sergey Panfilov
-            a.flex-item(ng-repeat="contact in ::contacts track by $index" ng-href="{{::contact.link}}")
-                i.contact_icon(ng-class="::contact.icon")
-                | &nbsp;
-                span(ng-bind="::contact.title")
