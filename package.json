@@ -1,0 +1,12 @@
+{
+  "name": "se-panfilov.github.io",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "git@github.com:se-panfilov/se-panfilov.github.io.git",
+  "author": "Sergei Panfilov <se-panfilov@ya.ru>",
+  "license": "GNU",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4"
+  }
+}
