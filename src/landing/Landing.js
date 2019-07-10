@@ -4,36 +4,35 @@ import './Landing.scss';
 export class Landing extends Component {
   render() {
     return (
-      <div className="landing">
-        <h1>Sergei Panfilov</h1>
-        <p>Frontend - JavaScript - Development</p>
-        <section>
-          <ul>
-            <li>
-              <a className="icon fa-envelope"
-                 href="mailto:se-panfilov@ya.ru">
-                <span className="label">se-panfilov@ya.ru</span>
-              </a>
-            </li>
-            <li>
-              <a className="icon fa fa-github"
-                 href="https://github.com/se-panfilov">
-                <span className="label">GitHub</span>
-              </a>
-            </li>
-            <li>
-              <a className="icon fa-stack-overflow"
-                 href="http://stackoverflow.com/users/930170/sergey-panfilov">
-                <span className="label">StackOverFlow</span>
-              </a>
-            </li>
-            <li>
-              <a className="icon fa-linkedin"
-                 href="https://ru.linkedin.com/in/sepanfilov/en">
-                <span className="label">LinkedIn</span>
-              </a>
-            </li>
-          </ul>
+      <div className="page -landing">
+        <section className="page__content">
+          <h1 className="page__header">Sergei Panfilov</h1>
+          <h2 className="page__sub-header">Frontend - JavaScript - Development</h2>
+          <section>
+            <ul className="contacts-list">
+              <li className="contacts-list__item">
+                <a className="contacts-list__item-link"
+                   href="https://github.com/se-panfilov">
+                  <i className="icon fa fa-github"/>
+                  <span className="label">GitHub</span>
+                </a>
+              </li>
+              <li className="contacts-list__item">
+                <a className="contacts-list__item-link"
+                   href="http://stackoverflow.com/users/930170/sergey-panfilov">
+                  <i className="icon fa fa-stack-overflow"/>
+                  <span className="label">StackOverFlow</span>
+                </a>
+              </li>
+              <li className="contacts-list__item">
+                <a className="contacts-list__item-link"
+                   href="https://ru.linkedin.com/in/sepanfilov/en">
+                  <i className="icon fa fa-linkedin"/>
+                  <span className="label">LinkedIn</span>
+                </a>
+              </li>
+            </ul>
+          </section>
         </section>
       </div>)
   }

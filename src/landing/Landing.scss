@@ -1,4 +1,4 @@
-.landing {
+.page {
   background-color: #000;
   width: 100%;
   height: 100%;
@@ -7,4 +7,48 @@
   display: block;
   color: #FFF;
   overflow: auto;
+
+  &__content {
+    padding: 15px;
+  }
+
+  &__header {
+    font-size: 4em;
+    margin: 0;
+    margin-top: 10%;
+    margin-left: 30px;
+    font-weight: 500;
+  }
+
+  &__sub-header {
+    font-size: 1.3em;
+    margin: 0;
+    margin-left: 30px;
+    font-weight: 300;
+  }
+
+  .contacts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-left: 30px;
+
+    &__item {
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      display: flex;
+      padding: 15px;
+      margin: 0;
+    }
+
+    &__item-link {
+      color: #FFFFFF;
+    }
+  }
+
 }
