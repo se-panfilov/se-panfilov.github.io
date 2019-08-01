@@ -1,6 +1,6 @@
 import React from 'react';
 import './Landing.scss';
-import {LinkItem} from '../components/link-item/linkItem'
+import {LinkItem} from '../../Components/LinkItem/LinkItem'
 
 export function Landing() {
   return (

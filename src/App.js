@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
-import {Landing} from './landing/Landing'
-import {Projects} from './projects/Projects'
+import {Landing} from './Views/Landing/Landing'
+import {Projects} from './Views/Projects/Projects'
 
 function App() {
   return (

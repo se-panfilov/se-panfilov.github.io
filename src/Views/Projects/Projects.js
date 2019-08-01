@@ -6,7 +6,9 @@ export class Projects extends Component {
     return (
       <div className="projects">
         <ul>
-          <li>1</li>
+          <li>
+            <ProjectItem></ProjectItem>
+          </li>
           <li>2</li>
           <li>3</li>
         </ul>
