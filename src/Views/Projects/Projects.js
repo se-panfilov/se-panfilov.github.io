@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Projects.scss'
+import {ProjectItem} from '../../Components/ProjectItem/ProjectItem'
 
 export class Projects extends Component {
   render() {
