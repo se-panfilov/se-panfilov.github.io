@@ -4,27 +4,27 @@
   height: 100%;
   margin: 0;
   padding: 0;
-  display: block;
+  display: flex;
   color: #FFF;
   overflow: auto;
 
   &__content {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__header {
     font-size: 4em;
     margin: 0;
-    margin-top: 10%;
-    margin-left: 30px;
     font-weight: 500;
   }
 
   &__sub-header {
     font-size: 1.3em;
     margin: 0;
-    margin-left: 30px;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   .contacts-list {
@@ -34,7 +34,6 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    margin-left: 30px;
 
     &__item {
       &:first-of-type {

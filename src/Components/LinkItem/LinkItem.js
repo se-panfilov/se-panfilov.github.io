@@ -1,11 +1,14 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 export function LinkItem(props) {
-  console.info(props);
   return (
-    <a className={props.className ? props.className : ''} href={props.url}>
-      <i className={`icon fa ${props.icon}`}/>
-      <span className="label">{props.text}</span>
+    <a className={props.className ? props.className : ''}
+       href={props.url}
+       title={props.text}
+    >
+      <FontAwesomeIcon icon={props.icon} size="lg"/>
     </a>
   )
 }
